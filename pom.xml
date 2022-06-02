@@ -15,6 +15,7 @@
     <description>ShortLinkGenerator</description>
     <properties>
         <java.version>11</java.version>
+        <hashid.version>1.0.3</hashid.version>
     </properties>
     <dependencies>
         <dependency>
@@ -47,6 +48,13 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
+        </dependency>
+
+<!--        Hashid - short link generation API-->
+        <dependency>
+            <groupId>org.hashids</groupId>
+            <artifactId>hashids</artifactId>
+            <version>${hashid.version}</version>
         </dependency>
     </dependencies>
 
