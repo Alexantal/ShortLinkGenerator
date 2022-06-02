@@ -1,12 +1,15 @@
 package com.yourcodereview.melnikov.task2.DTO;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
-@Data
-@AllArgsConstructor
+import javax.persistence.Access;
+import javax.persistence.AccessType;
+
+@Access(AccessType.FIELD)
+@Getter
+@Setter
 @NoArgsConstructor
+@AllArgsConstructor
 public class ShortLinkDto {
 
     private String link;

@@ -22,14 +22,14 @@ spring:
 
   data.rest:
     #  https://docs.spring.io/spring-data/rest/docs/current/reference/html/#getting-started.basic-settings
-    basePath: /
+    basePath: /api
     defaultPageSize: 20
     returnBodyOnCreate: true
 
 logging:
   level:
     root: WARN
-    com.yourcodereview.melnikov.task: DEBUG
+    com.yourcodereview.melnikov.task2: DEBUG
 
 server.servlet:
   encoding:
