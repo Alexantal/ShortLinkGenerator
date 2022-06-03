@@ -19,9 +19,15 @@ public class ShortLinkService {
         return checkingHolder.isNew() ? generateShortLinkByOriginalUrl(originalUrl) : checkingHolder.getShortLink();
     }
 
+    public String findOriginalLinkByShortLink(String shortLink) {
+        LinkHolder checkingHolder = repository.findByShortLink(shortLink).orElse(new LinkHolder());
+        return checkingHolder.isNew() ? "" : checkingHolder.getOriginalLink();
+    }
+
     private String generateShortLinkByOriginalUrl(String originalUrl) {
         int nextLinkHolderPK = repository.findMaxId().orElse(0) + 1;
-        Hashids hashids = new Hashids("unique string for base", 8);
+        int minHashLength = 8;
+        Hashids hashids = new Hashids("unique string for base", minHashLength);
         String newShortLink = "/l/" + hashids.encode(nextLinkHolderPK);
         repository.save(new LinkHolder(newShortLink, originalUrl));
         return newShortLink;

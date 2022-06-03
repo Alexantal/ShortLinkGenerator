@@ -26,6 +26,7 @@ public class ShortLinkGenerationController {
         String longLink = originalLink.getOriginal();
         log.info("Short link generation request for original link: {}", longLink);
         String newLink = service.findOrGenerateShortLinkByOriginalUrl(longLink);
+        log.info("Short link is: {}", newLink);
         return ResponseEntity.ok(new ShortLinkDto(newLink));
     }
 }
