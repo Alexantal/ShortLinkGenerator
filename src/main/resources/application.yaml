@@ -1,0 +1,38 @@
+#  https://docs.spring.io/spring-boot/docs/current/reference/html/common-application-properties.html
+spring:
+  jpa:
+    show-sql: true
+    # https://stackoverflow.com/questions/30549489/what-is-this-spring-jpa-open-in-view-true-property-in-spring-boot/48222934#48222934
+    open-in-view: false
+    hibernate:
+      ddl-auto: none
+    properties:
+      #  http://docs.jboss.org/hibernate/orm/5.3/userguide/html_single/Hibernate_User_Guide.html#configurations
+      hibernate:
+        format_sql: true
+        default_batch_fetch_size: 20
+        # https://stackoverflow.com/questions/21257819/what-is-the-difference-between-hibernate-jdbc-fetch-size-and-hibernate-jdbc-batc
+        jdbc.batch_size: 20
+  datasource:
+    # Relative path form current dir
+    url: jdbc:h2:./db/linkdb
+    #     tcp: jdbc:h2:tcp://localhost:9092/./db/linkdb
+    username: sa
+    password:
+
+  data.rest:
+    #  https://docs.spring.io/spring-data/rest/docs/current/reference/html/#getting-started.basic-settings
+    basePath: /api
+    defaultPageSize: 20
+    returnBodyOnCreate: true
+
+logging:
+  level:
+    root: WARN
+    com.yourcodereview.melnikov.task2: DEBUG
+
+server.servlet:
+  encoding:
+    charset: UTF-8 # Charset of HTTP requests and responses. Added to the "Content-Type" header if not set explicitly
+    enabled: true # Enable http encoding support
+    force: true
