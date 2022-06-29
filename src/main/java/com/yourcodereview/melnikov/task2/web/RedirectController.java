@@ -25,7 +25,7 @@ public class RedirectController {
     public ResponseEntity<Void> redirect(@PathVariable String shortLink) {
         String incomingShortLink = ServletUriComponentsBuilder.fromCurrentRequestUri().build().getPath();
         log.info("Redirect is starting. Short link is: {}", incomingShortLink);
-        String originalLink = service.findOriginalLinkByShortLink(incomingShortLink);
+        String originalLink = service.findOriginalLinkByShortLink(shortLink);
         return originalLink.equals("")
                 ? ResponseEntity.status(HttpStatus.NOT_FOUND).build()
                 : ResponseEntity.status(HttpStatus.PERMANENT_REDIRECT).location(URI.create(originalLink)).build();

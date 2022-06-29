@@ -1,4 +1,4 @@
-package com.yourcodereview.melnikov.task2.DTO;
+package com.yourcodereview.melnikov.task2.dto;
 
 import lombok.*;
 

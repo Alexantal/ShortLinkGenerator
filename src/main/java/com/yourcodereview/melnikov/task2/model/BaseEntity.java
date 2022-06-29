@@ -2,23 +2,25 @@ package com.yourcodereview.melnikov.task2.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
+import org.hibernate.validator.constraints.Range;
 import org.springframework.data.domain.Persistable;
 
 import javax.persistence.*;
+import java.util.Objects;
 
 @MappedSuperclass
-//  https://stackoverflow.com/a/6084701/548473
 @Access(AccessType.FIELD)
 @Getter
 @Setter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor(access = AccessLevel.PROTECTED)
 @ToString
-public class BaseEntity implements Persistable<Integer> {
+public class BaseEntity implements Persistable<Long> {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    protected Integer id;
+    @Range(max = 9007199254740992L)
+    protected Long id;
 
     @JsonIgnore
     @Override
@@ -26,7 +28,6 @@ public class BaseEntity implements Persistable<Integer> {
         return id == null;
     }
 
-    //    https://stackoverflow.com/questions/1638723
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -41,6 +42,6 @@ public class BaseEntity implements Persistable<Integer> {
 
     @Override
     public int hashCode() {
-        return id == null ? 0 : id;
+        return Objects.hashCode(id);
     }
 }
